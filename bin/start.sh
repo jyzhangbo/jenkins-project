@@ -13,4 +13,4 @@ if [ ! -d $LOGS_DIR ]; then
 fi
 STDOUT_FILE=$LOGS_DIR/service.log
 
-nohup java -jar /home/enn/bin/jenkins-project-1.0-SNAPSHOT.jar > $STDOUT_FILE 2>&1 &
+nohup java -jar /home/enn/bin/jenkins-project-0.0.1-SNAPSHOT.jar > $STDOUT_FILE 2>&1 &

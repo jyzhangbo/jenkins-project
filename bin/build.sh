@@ -4,6 +4,7 @@ cp -rf bin /home/enn/
 mv target/${SERVER_NAME} /home/enn/bin/
 cd /home/enn/bin/
 ls
-chmod 755 *.*
+chmod 777 *.*
 ./stop.sh
+BUILD_ID=dontKillMe
 ./start.sh
