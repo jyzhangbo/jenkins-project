@@ -5,6 +5,5 @@ MAINTAINER zhangboad <zhangboad@enn.cn>
 ADD bin /enn/bin
 RUN chmod 755 /enn/bin/*.sh
 
-ENTRYPOINT ["/enn/bin/start.sh"]
-
+ENTRYPOINT sh /enn/bin/start.sh
 EXPOSE 8082
