@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SERVER_NAME="jenkins-project"
+
 PIDS=`ps -ef | grep "jenkins-project" | grep -v grep | awk '{print $2}'`
 if [ -n "$PIDS" ]; then
     echo "ERROR: The $SERVER_NAME already started!"
