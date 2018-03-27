@@ -1,0 +1,22 @@
+#!/bin/sh
+
+#这句语句告诉bash如果任何语句的执行结果不是true则应该退出
+set -e
+
+#将环境变量BRANCH中的origion/ 替换为空字符串
+SOURCE_BRANCH=${BRANCH/origin\//}
+TARGET_NAME="jenkins-project-0.0.1-SNAPSHOT.jar"
+
+mv ../target/${TARGET_NAME} ./bin
+
+docker build -t reg.enncloud.cn/ennwifi-dev/jenkins-project:${SOURCE_BRANCH} .
+
+docker login -u zhangboad -p zb405133134 -e zhangboad@enn.cn reg.enncloud.cn
+
+docker push reg.enncloud.cn/ennwifi-dev/jenkins-project:${SOURCE_BRANCH}
+
+count=`docker images|grep 'ˆ<none>'|awk '{print $3}'|wc -l`
+
+if [ $count -gt 0 ]; then
+   docker rmi `docker images|grep 'ˆ<none>'|awk '{print $3}'`
+fi
