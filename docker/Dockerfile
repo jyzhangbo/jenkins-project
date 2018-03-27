@@ -5,5 +5,5 @@ MAINTAINER zhangboad <zhangboad@enn.cn>
 ADD bin /enn/bin
 RUN chmod 755 /enn/bin/*.sh
 
-ENTRYPOINT /enn/bin/start.sh
+ENTRYPOINT ["java" ,"-jar","/enn/bin/jenkins-project-0.0.1-SNAPSHOT.jar"]
 EXPOSE 8082
