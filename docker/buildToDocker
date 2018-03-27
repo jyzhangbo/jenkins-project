@@ -1,14 +1,14 @@
 #!/bin/bash
 
-#将环境变量BRANCH中的origion/ 替换为空字符串
 SOURCE_BRANCH=${BRANCH/origin\//}
 TARGET_NAME="jenkins-project-0.0.1-SNAPSHOT.jar"
 
-echo '${SOURCE_BRANCH}'
+echo ${SOURCE_BRANCH}
 PWD
 
 mv target/${TARGET_NAME} docker/bin
-cd docker/bin
+cd docker
+
 docker build -t reg.enncloud.cn/ennwifi-dev/jenkins-project:${SOURCE_BRANCH} .
 
 docker login -u zhangboad -p zb405133134 -e zhangboad@enn.cn reg.enncloud.cn
