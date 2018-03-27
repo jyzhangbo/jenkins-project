@@ -1,3 +1,3 @@
 #!/bin/bash
-./stop.sh
-./start.sh
+/enn/bin/stop.sh
+/enn/bin/start.sh
