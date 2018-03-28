@@ -12,12 +12,21 @@ pipeline {
             }
         }
 
-        stage('build'){
-            steps {
-                    input(message : '请选择发布环境', id : 'publishtype', ok : "dev",
-                    parameters : [choice(name:'ptype', choices:'dev\npro',description:'发布类型')])
-            }
-         }
+       stage('Example') {
+           input {
+               message "choice publish type?"
+               ok "Yes"
+               parameters {
+                   choice(name: 'PERSON', choices: 'dev\npro',description: 'choice?')
+               }
+           }
+           steps {
+               echo "Hello, ${PERSON}, nice to meet you."
+
+               sh 'mvn clean package'
+           }
+       }
+
     }
 
 
