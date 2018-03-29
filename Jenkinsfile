@@ -19,7 +19,7 @@ pipeline {
                 echo 'devlop'
                 sh 'mv target/jenkins-project-0.0.1-SNAPSHOT.jar docker/bin'
                 script{
-                    def customImage = docker.build("jenkins-project:${env.BRANCH_NAME}","./docker")
+                    def customImage = docker.build("zhangbo/jenkins-project:${env.BRANCH_NAME}","./docker")
                     customImage.push()
                 }
             }
