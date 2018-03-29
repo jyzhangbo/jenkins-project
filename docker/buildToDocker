@@ -4,13 +4,13 @@ SOURCE_BRANCH=${BRANCH/origin\//}
 TARGET_NAME="jenkins-project-0.0.1-SNAPSHOT.jar"
 
 echo ${SOURCE_BRANCH}
-PWD
+pwd
 
 mv target/${TARGET_NAME} docker/bin
 cd docker
 
-docker build -t reg.enncloud.cn/ennwifi-dev/jenkins-project:${SOURCE_BRANCH} .
+docker build -t zhangbo405/jenkins-project:${SOURCE_BRANCH} .
 
-docker login -u zhangboad -p zb405133134 -e zhangboad@enn.cn reg.enncloud.cn
+docker login -u zhangbo405 -p zb405133134 -e 405133134@qq.com docker.io
 
-docker push reg.enncloud.cn/ennwifi-dev/jenkins-project:${SOURCE_BRANCH}
+docker push zhangbo405/jenkins-project:${SOURCE_BRANCH}
