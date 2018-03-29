@@ -1,28 +1,28 @@
 pipeline {
-  agent {
-    label 'master'
-  }
-  stages {
-    stage('Checkout') {
-      steps {
-        echo 'Checkout'
-      }
+    agent {
+        label 'master'
     }
-    stage('Build') {
-      steps {
-        echo 'Building'
-        sh 'mvn clean package'
-      }
-    }
-    stage('devlop') {
-        steps {
-            echo 'devlop'
-            sh 'mv target/jenkins-project-0.0.1-SNAPSHOT.jar docker/bin'
-            script{
-                def customImage = docker.build("jenkins-project:${env.BRANCH_NAME}")
-                customImage.push()
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checkout'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building'
+                sh 'mvn clean package'
+            }
+        }
+        stage('devlop') {
+            steps {
+                echo 'devlop'
+                sh 'mv target/jenkins-project-0.0.1-SNAPSHOT.jar docker/bin'
+                script{
+                    def customImage = docker.build("zhangbo405/jenkins-project:${env.BRANCH_NAME}","./docker")
+                    customImage.push()
+                }
             }
         }
     }
-  }
 }
