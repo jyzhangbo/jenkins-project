@@ -11,7 +11,17 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building'
-        input(message: 'continue?', id: 'test11', ok: 'continue')
+        sh 'mvn clean package'
+      }
+    }
+    stage('devlop') {
+      steps {
+        echo 'devlop'
+
+        script{
+          def customImage = docker.build("jenkins-project:${env.BRANCH_NAME}")
+          customImage.push()
+        }
       }
     }
   }
