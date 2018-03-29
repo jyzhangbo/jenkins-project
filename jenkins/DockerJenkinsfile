@@ -15,15 +15,14 @@ pipeline {
       }
     }
     stage('devlop') {
-      steps {
-        echo 'devlop'
-        sh
-
-        script{
-          def customImage = docker.build("jenkins-project:${env.BRANCH_NAME}","./docker")
-          customImage.push()
+        steps {
+            echo 'devlop'
+            sh 'mv target/jenkins-project-0.0.1-SNAPSHOT.jar docker/bin'
+            script{
+                def customImage = docker.build("jenkins-project:${env.BRANCH_NAME}")
+                customImage.push()
+            }
         }
-      }
     }
   }
 }
